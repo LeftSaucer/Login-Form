@@ -1,0 +1,52 @@
+:root {
+    background-color: hsl(0, 0%, 75%);
+}
+
+#form-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#loginForm {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 70%);
+    width: 300px;
+    height: auto;
+    margin: 25px;
+    border-radius: 15px;
+    padding: 20px 30px;
+    box-shadow: 2px 2px 5px black;
+}
+
+form input {
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    margin-right: 148px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 1px 1px 2px black;
+    background-color: hsl(0, 0%, 75%);
+}
+
+button:hover {
+    background-color: hsl(0, 0%, 80%);
+}
+
+button:active {
+    background-color: hsl(0, 0%, 85%);
+    transform: scale(90%);
+}
+
+#submit-signup {
+    display: flex;
+    align-items: center;
+}
