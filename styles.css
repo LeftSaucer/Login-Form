@@ -29,8 +29,9 @@ form input {
 
 input {
     border-radius: 5px;
-    border: none;
     box-shadow: 1px 1px 2px black;
+    height: 30px;
+    font-size: 1.1rem;
 }
 
 button {
@@ -55,4 +56,8 @@ button:active {
 #submit-signup {
     display: flex;
     align-items: center;
+}
+
+.wrongInfo {
+    border-color: red;
 }
