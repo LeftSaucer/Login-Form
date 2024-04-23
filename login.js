@@ -10,7 +10,14 @@ let accounts = JSON.parse(localStorage.getItem('accounts') || '[]');
 function signin(event) {
     event.preventDefault();
 
-    if(!passwordRegex.test(password.value)){
+    let foundEmail = accounts.find(account => account.email === email.value);
+
+    if(foundEmail){
+        document.getElementById("email").classList.add("wrongInfo");
+        setTimeout(function() {
+            alert("Signup Failed: Email already in use!");
+        }, 100);
+    }else if(!passwordRegex.test(password.value)){
         alert('Password must contain at least one uppercase letter and one special character.');
     }else if(password.value !== password2.value){
         alert("Passwords Don't Match.");
@@ -35,7 +42,6 @@ function signin(event) {
 
 function login(event) {
     event.preventDefault();
-    let accounts = JSON.parse(localStorage.getItem('accounts') || '[]');
     let foundAccount = accounts.find(account => account.email === email.value && account.password === password.value);
 
     if (foundAccount) {
