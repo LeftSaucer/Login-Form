@@ -5,7 +5,7 @@ const lastName = document.getElementById("lastName");
 const password2 = document.getElementById("confirm-pass");
 const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*]).*$/;
 
-let accounts = [];
+let accounts = JSON.parse(localStorage.getItem('accounts') || '[]');
 
 function signin(event) {
     event.preventDefault();
@@ -23,6 +23,7 @@ function signin(event) {
         }
 
         accounts.push(newAccount);
+        localStorage.setItem('accounts', JSON.stringify(accounts));
 
         alert("Signin Successful!")
         window.location.href='./login.html';
