@@ -27,6 +27,12 @@ form input {
     margin-bottom: 15px;
 }
 
+input {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 2px black;
+}
+
 button {
     width: 100px;
     height: 25px;

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Signup Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="form-container">
-        <h1>Login</h1>
+        <h1>Signup</h1>
         <form id="loginForm">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
             <input type="text" id="email" placeholder="Email" required>
             <input type="password" id="password" placeholder="Password" required>
-            <div id="submit-signup">
-            <button id="submit" type="submit">Submit</button>
-            <p class="signup"><a href="./signup.html">sign up</a></p>
-            </div>
+            <input type="password" id="confirm-pass" placeholder="Confirm Password" required>
+            <a href="./login.html"><button id="submit" type="submit">Submit</button></a>
         </form>
     </div>
 </body>
