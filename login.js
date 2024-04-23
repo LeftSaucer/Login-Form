@@ -35,31 +35,37 @@ function signin(event) {
 
 function login(event) {
     event.preventDefault();
-    let isEmail = false;
-    let isPassword = false;
+    let accounts = JSON.parse(localStorage.getItem('accounts') || '[]');
+    let foundAccount = accounts.find(account => account.email === email.value && account.password === password.value);
 
-    for (let account of accounts) {
-        if (account.email === email.value){
-            isEmail = true;
-            if (account.password === password.value){
-                isPassword = true;
-                break;
-            }
-        }
-    }
-
-    if (!isEmail || !isPassword) {
-        if (!isEmail) {
-            document.getElementById("email").classList.add("wrongInfo");
-        }
-        if (!isPassword) {
-            document.getElementById("password").classList.add("wrongInfo");
-        }
+    if (foundAccount) {
+        localStorage.setItem('currentUser', JSON.stringify(foundAccount)); // Store the logged-in user
+        alert("Login successful!");
+        window.location.href = 'account.html';
+    } else {
+        document.getElementById("email").classList.add("wrongInfo");
+        document.getElementById("password").classList.add("wrongInfo");
         setTimeout(function() {
             alert("Login failed: Email not recognized or password incorrect");
         }, 100);
-    } else {
-        alert("Login successful!");
     }
 
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve the accounts from localStorage
+    let accounts = JSON.parse(localStorage.getItem('accounts'));
+
+    // Check if there are any accounts saved
+    if (accounts && accounts.length > 0) {
+        // Assuming you want to display the last account added
+        let lastAccount = accounts[accounts.length - 1];
+
+        // Assign the values to HTML elements
+        document.getElementById('firstName').textContent = lastAccount.firstName;
+        document.getElementById('lastName').textContent = lastAccount.lastName;
+        document.getElementById('email').textContent = lastAccount.email;
+    } else {
+        console.log('No accounts data available');
+    }
+});
