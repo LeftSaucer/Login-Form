@@ -7,8 +7,12 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*]).*$/;
 
 let accounts = JSON.parse(localStorage.getItem('accounts') || '[]');
 
+
 function signin(event) {
     event.preventDefault();
+
+    console.log("accounts: ");
+    console.log(accounts);
 
     let foundEmail = accounts.find(account => account.email === email.value);
 
@@ -42,12 +46,18 @@ function signin(event) {
 
 function login(event) {
     event.preventDefault();
+
+    console.log(accounts);
+
     let foundAccount = accounts.find(account => account.email === email.value && account.password === password.value);
 
     if (foundAccount) {
         localStorage.setItem('currentUser', JSON.stringify(foundAccount)); // Store the logged-in user
         alert("Login successful!");
         window.location.href = 'account.html';
+
+        document.getElementById("firstName").textContent = foundAccount.firstName;
+
     } else {
         document.getElementById("email").classList.add("wrongInfo");
         document.getElementById("password").classList.add("wrongInfo");
@@ -58,20 +68,3 @@ function login(event) {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Retrieve the accounts from localStorage
-    let accounts = JSON.parse(localStorage.getItem('accounts'));
-
-    // Check if there are any accounts saved
-    if (accounts && accounts.length > 0) {
-        // Assuming you want to display the last account added
-        let lastAccount = accounts[accounts.length - 1];
-
-        // Assign the values to HTML elements
-        document.getElementById('firstName').textContent = lastAccount.firstName;
-        document.getElementById('lastName').textContent = lastAccount.lastName;
-        document.getElementById('email').textContent = lastAccount.email;
-    } else {
-        console.log('No accounts data available');
-    }
-});
